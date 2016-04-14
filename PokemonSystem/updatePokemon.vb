@@ -3,9 +3,11 @@
         'This button will not only check to see if there are any errors in the input of the pokemon but will also save it to the database.
 
 
+        Dim strpokemonName As String
         Dim strpokemonTier As String
         Dim strpokemonType1 As String
         Dim strpokemonType2 As String
+        Dim intID As Integer
         Dim intHP As Integer
         Dim intAttack As Integer
         Dim intDefense As Integer
@@ -17,6 +19,9 @@
 
         strpokemonType1 = cboType1.Text
         strpokemonType2 = cboType2.Text
+        strpokemonName = cboName.Text
+        intID = CInt(LabelID.Text)
+
 
         Try
             intHP = CInt(txtHP.Text)
@@ -67,21 +72,78 @@
         End Try
 
 
+        Dim sqlconn = New SqlClient.SqlConnection("Data Source=DESKTOP-KGMCUKK\SQLEXPRESS;Initial Catalog=PokemonDB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+        Dim sqlCmd As New SqlClient.SqlCommand
+        sqlconn.Open()
+        sqlCmd.Connection = sqlconn
+        Dim typeOneParam As New SqlClient.SqlParameter
+        typeOneParam.SqlDbType = SqlDbType.NVarChar
+        typeOneParam.Direction = ParameterDirection.Input
+        typeOneParam.Value = strpokemonType1
+        typeOneParam.ParameterName = "@typeOne"
 
-        Dim pdt As New pokemonDBDataSetTableAdapters.PokemonMainTableTableAdapter
 
-        ' pdt.Insert(strpokemonName, strpokemonTier, strpokemonType1, strpokemonType2, intHP, intAttack, intDefense, intSpecialAttack, intSpecialDefense, intSpeed)
+        Dim pokemonName As New SqlClient.SqlParameter
+        pokemonName.SqlDbType = SqlDbType.NVarChar
+        pokemonName.Direction = ParameterDirection.Input
+        pokemonName.Value = strpokemonName
+        pokemonName.ParameterName = "@pokemonName"
+
+        Dim pokemonID As New SqlClient.SqlParameter
+        pokemonID.SqlDbType = SqlDbType.Int
+        pokemonID.Direction = ParameterDirection.Input
+        pokemonID.Value = intID
+        pokemonID.ParameterName = "@pokemonID"
+
+        Dim pokemonHP As New SqlClient.SqlParameter
+        pokemonHP.SqlDbType = SqlDbType.Int
+        pokemonHP.Direction = ParameterDirection.Input
+        pokemonHP.Value = intHP
+        pokemonHP.ParameterName = "@pokemonHP"
+
+        Dim pokemonAttk As New SqlClient.SqlParameter
+        pokemonAttk.SqlDbType = SqlDbType.Int
+        pokemonAttk.Direction = ParameterDirection.Input
+        pokemonAttk.Value = intAttack
+        pokemonAttk.ParameterName = "@pokemonAttk"
 
 
-        '        Dim sqlConn As New SqlClient.SqlConnection("Data Source=DESKTOP-KGMCUKK\SQLEXPRESS;Initial Catalog=PokemonDB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
-        '        sqlConn.Open()
+        sqlCmd.Parameters.Add(pokemonName)
+        sqlCmd.Parameters.Add(typeOneParam)
+        sqlCmd.Parameters.Add(pokemonID)
+        sqlCmd.Parameters.Add(pokemonHP)
+        sqlCmd.Parameters.Add(pokemonAttk)
+        sqlCmd.CommandText = "UPDATE PokemonMainTable SET [Type 1] = @typeOne, [Pokemon Name] = @pokemonName, [HP] = @pokemonHP, [Attack] = @pokemonAttk" &
+            " WHERE [Id] =  @pokemonID"
 
-        '        Dim sqlcommand As New SqlClient.SqlCommand("insert into dbo.PokemonMainTable ([Pokemon Name],[teir],[type 1],[type 2],[hp],[attack],[defense],
-        '[special attack],[special defense],[speed]) values ("",'','','',0,0,0,0,0,0)", sqlConn)
+        Dim result As Integer = sqlCmd.ExecuteNonQuery
 
-        '        Dim results As Integer = sqlcommand.ExecuteNonQuery()
 
-        Dim s = "stop"
+
+
+
+
+
+
+        'With sqlCmd
+        '    .Connection = sqlconn
+        '    If cmbTeir.Text = "All" Then
+        '        .CommandText = "Select [pokemon name] + ',' + [Teir] from pokemonmaintable"
+        '    Else
+        '        .CommandText = "Select [pokemon name] + ',' + [Teir] from pokemonmaintable where [Teir] = '" & cmbTeir.Text.ToString() & "'"
+        '    End If
+
+
+        'End With
+        'Dim dReader As SqlClient.SqlDataReader = sqlCmd.ExecuteReader
+        'lstPokemonList.Items.Clear()
+
+        'For Each item In dReader
+        '    lstPokemonList.Items.Add(item(0))
+        'Next
+        sqlconn.Close()
+
+
 
 
     End Sub
@@ -96,7 +158,44 @@
 
     Private Sub cboName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboName.SelectedIndexChanged
         Dim pdt As New pokemonDBDataSetTableAdapters.PokemonMainTableTableAdapter
+        LabelID.Text = cboName.SelectedValue
 
+        Dim sqlconn = New SqlClient.SqlConnection("Data Source=DESKTOP-KGMCUKK\SQLEXPRESS;Initial Catalog=PokemonDB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+        Dim sqlCmd As New SqlClient.SqlCommand
+        sqlconn.Open()
+
+
+        Dim pokemonID As New SqlClient.SqlParameter
+        pokemonID.SqlDbType = SqlDbType.Int
+        pokemonID.Direction = ParameterDirection.Input
+        pokemonID.Value = CInt(LabelID.Text)
+        pokemonID.ParameterName = "@pokemonID"
+
+
+        With sqlCmd
+            .Connection = sqlconn
+            .CommandText = "Select * FROM PokemonMainTable WHERE Id =  @pokemonID"
+            .Parameters.Add(pokemonID)
+
+        End With
+
+
+        Dim dReader As SqlClient.SqlDataReader = sqlCmd.ExecuteReader
+
+        For Each item In dReader
+            cboTier.SelectedItem = item(2)
+            cboType1.SelectedItem = item(3)
+            cboType2.SelectedItem = item(4)
+            txtHP.Text = item(5)
+            txtAttack.Text = item(6)
+            txtDefense.Text = item(6)
+            txtSpecialAttack.Text = item(7)
+            txtSpecialDefense.Text = item(8)
+            txtSpeed.Text = item(9)
+
+        Next
+
+        sqlconn.Close()
 
     End Sub
 
@@ -108,4 +207,5 @@
         End Try
 
     End Sub
+
 End Class

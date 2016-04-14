@@ -48,9 +48,14 @@ Partial Class updatePokemon
         Me.cboName = New System.Windows.Forms.ComboBox()
         Me.PokemonMainTableTableAdapter = New PokemonSystem.pokemonDBDataSetTableAdapters.PokemonMainTableTableAdapter()
         Me.cboTier = New System.Windows.Forms.ComboBox()
+        Me.PokemonMainTableBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PokemonMainTableBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.LabelID = New System.Windows.Forms.Label()
         CType(Me.PokemonMainTableBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PokemonDBDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PokemonDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PokemonMainTableBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PokemonMainTableBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtSpeed
@@ -114,25 +119,21 @@ Partial Class updatePokemon
         '
         'cboType2
         '
-        Me.cboType2.DataSource = Me.PokemonMainTableBindingSource
-        Me.cboType2.DisplayMember = "Type 2"
         Me.cboType2.FormattingEnabled = True
+        Me.cboType2.Items.AddRange(New Object() {"Bug", "Electric", "Fairy", "Fire", "Flying", "Grass", "Ground", "Normal", "Poison", "Water"})
         Me.cboType2.Location = New System.Drawing.Point(736, 27)
         Me.cboType2.Name = "cboType2"
         Me.cboType2.Size = New System.Drawing.Size(121, 24)
         Me.cboType2.TabIndex = 35
-        Me.cboType2.ValueMember = "Type 2"
         '
         'cboType1
         '
-        Me.cboType1.DataSource = Me.PokemonMainTableBindingSource
-        Me.cboType1.DisplayMember = "Type 1"
         Me.cboType1.FormattingEnabled = True
+        Me.cboType1.Items.AddRange(New Object() {"Bug", "Electric", "Fairy", "Fire", "Flying", "Grass", "Ground", "Normal", "Poison", "Water"})
         Me.cboType1.Location = New System.Drawing.Point(458, 32)
         Me.cboType1.Name = "cboType1"
         Me.cboType1.Size = New System.Drawing.Size(121, 24)
         Me.cboType1.TabIndex = 34
-        Me.cboType1.ValueMember = "Type 1"
         '
         'lblSpeed
         '
@@ -241,14 +242,14 @@ Partial Class updatePokemon
         'cboName
         '
         Me.cboName.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.PokemonMainTableBindingSource, "Id", True))
-        Me.cboName.DataSource = Me.PokemonMainTableBindingSource
+        Me.cboName.DataSource = Me.PokemonMainTableBindingSource1
         Me.cboName.DisplayMember = "Pokemon Name"
         Me.cboName.FormattingEnabled = True
         Me.cboName.Location = New System.Drawing.Point(141, 34)
         Me.cboName.Name = "cboName"
         Me.cboName.Size = New System.Drawing.Size(208, 24)
         Me.cboName.TabIndex = 42
-        Me.cboName.ValueMember = "Pokemon Name"
+        Me.cboName.ValueMember = "Id"
         '
         'PokemonMainTableTableAdapter
         '
@@ -266,11 +267,32 @@ Partial Class updatePokemon
         Me.cboTier.TabIndex = 43
         Me.cboTier.Tag = ""
         '
+        'PokemonMainTableBindingSource1
+        '
+        Me.PokemonMainTableBindingSource1.DataMember = "PokemonMainTable"
+        Me.PokemonMainTableBindingSource1.DataSource = Me.PokemonDBDataSet1
+        '
+        'PokemonMainTableBindingSource2
+        '
+        Me.PokemonMainTableBindingSource2.DataMember = "PokemonMainTable"
+        Me.PokemonMainTableBindingSource2.DataSource = Me.PokemonDBDataSet1
+        '
+        'LabelID
+        '
+        Me.LabelID.AutoSize = True
+        Me.LabelID.Location = New System.Drawing.Point(13, 14)
+        Me.LabelID.Name = "LabelID"
+        Me.LabelID.Size = New System.Drawing.Size(16, 17)
+        Me.LabelID.TabIndex = 44
+        Me.LabelID.Text = "0"
+        Me.LabelID.Visible = False
+        '
         'updatePokemon
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(883, 537)
+        Me.Controls.Add(Me.LabelID)
         Me.Controls.Add(Me.cboTier)
         Me.Controls.Add(Me.cboName)
         Me.Controls.Add(Me.txtSpeed)
@@ -297,6 +319,8 @@ Partial Class updatePokemon
         CType(Me.PokemonMainTableBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PokemonDBDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PokemonDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PokemonMainTableBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PokemonMainTableBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -327,4 +351,7 @@ Partial Class updatePokemon
     Friend WithEvents PokemonMainTableBindingSource As BindingSource
     Friend WithEvents PokemonMainTableTableAdapter As pokemonDBDataSetTableAdapters.PokemonMainTableTableAdapter
     Friend WithEvents cboTier As ComboBox
+    Friend WithEvents PokemonMainTableBindingSource2 As BindingSource
+    Friend WithEvents PokemonMainTableBindingSource1 As BindingSource
+    Friend WithEvents LabelID As Label
 End Class

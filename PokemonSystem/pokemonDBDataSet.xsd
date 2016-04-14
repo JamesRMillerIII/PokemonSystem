@@ -51,7 +51,7 @@ FROM     PokemonMainTable</CommandText>
               <Mapping SourceColumn="Speed" DataSetColumn="Speed" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="PokemonDBConn (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteById" Modifier="Public" Name="DeleteById" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="DeleteById">
+              <DbSource ConnectionRef="PokemonDBConn (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteById" Modifier="Public" Name="DeleteById" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteById">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM PokemonMainTable
@@ -62,7 +62,7 @@ WHERE  (Id = @pId)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="PokemonDBConn (MySettings)" DbObjectName="PokemonDB.dbo.PokemonMainTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+              <DbSource ConnectionRef="PokemonDBConn (MySettings)" DbObjectName="PokemonDB.dbo.PokemonMainTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT Id, [Pokemon Name], Teir, [Type 1], [Type 2], HP, Attack, Defense, [Special Attack], [Special Defense], Speed
@@ -74,7 +74,7 @@ WHERE  (Id = @Id)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="PokemonDBConn (MySettings)" DbObjectName="PokemonDB.dbo.PokemonMainTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
+              <DbSource ConnectionRef="PokemonDBConn (MySettings)" DbObjectName="PokemonDB.dbo.PokemonMainTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillBy1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT PokemonMainTable.*
@@ -86,7 +86,16 @@ WHERE Id = @pId</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="PokemonDBConn (MySettings)" DbObjectName="PokemonDB.dbo.PokemonMainTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy2" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillBy2">
+              <DbSource ConnectionRef="PokemonDBConn (MySettings)" DbObjectName="PokemonDB.dbo.PokemonMainTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy2" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy2" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="FillBy2">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT PokemonMainTable.*
+FROM     PokemonMainTable</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="PokemonDBConn (MySettings)" DbObjectName="PokemonDB.dbo.PokemonMainTable" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy3" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy3" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="FillBy3">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT PokemonMainTable.*
@@ -105,7 +114,7 @@ FROM     PokemonMainTable</CommandText>
   <xs:element name="pokemonDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="pokemonDBDataSet" msprop:Generator_UserDSName="pokemonDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PokemonMainTable" msprop:Generator_TableClassName="PokemonMainTableDataTable" msprop:Generator_TableVarName="tablePokemonMainTable" msprop:Generator_TablePropName="PokemonMainTable" msprop:Generator_RowDeletingName="PokemonMainTableRowDeleting" msprop:Generator_RowChangingName="PokemonMainTableRowChanging" msprop:Generator_RowEvHandlerName="PokemonMainTableRowChangeEventHandler" msprop:Generator_RowDeletedName="PokemonMainTableRowDeleted" msprop:Generator_UserTableName="PokemonMainTable" msprop:Generator_RowChangedName="PokemonMainTableRowChanged" msprop:Generator_RowEvArgName="PokemonMainTableRowChangeEvent" msprop:Generator_RowClassName="PokemonMainTableRow">
+        <xs:element name="PokemonMainTable" msprop:Generator_TableClassName="PokemonMainTableDataTable" msprop:Generator_TableVarName="tablePokemonMainTable" msprop:Generator_RowChangedName="PokemonMainTableRowChanged" msprop:Generator_TablePropName="PokemonMainTable" msprop:Generator_RowDeletingName="PokemonMainTableRowDeleting" msprop:Generator_RowChangingName="PokemonMainTableRowChanging" msprop:Generator_RowEvHandlerName="PokemonMainTableRowChangeEventHandler" msprop:Generator_RowDeletedName="PokemonMainTableRowDeleted" msprop:Generator_RowClassName="PokemonMainTableRow" msprop:Generator_UserTableName="PokemonMainTable" msprop:Generator_RowEvArgName="PokemonMainTableRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />

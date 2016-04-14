@@ -25,4 +25,8 @@
     Private Sub BuildNewTeamToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BuildNewTeamToolStripMenuItem.Click
         pokemonBuilder.ShowDialog()
     End Sub
+
+    Private Sub CompareTeamsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CompareTeamsToolStripMenuItem.Click
+        analyzePokemon.ShowDialog()
+    End Sub
 End Class

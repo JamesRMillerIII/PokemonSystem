@@ -29,20 +29,22 @@ Partial Class Form1
         Me.PokemonToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewPokemonToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BuilderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BuildNewTeamToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BuilderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BuildNewTeamToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AnalyzeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CompareTeamsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.PokemonToolStripMenuItem, Me.BuilderToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.PokemonToolStripMenuItem, Me.BuilderToolStripMenuItem, Me.AnalyzeToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(593, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(632, 28)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -84,6 +86,18 @@ Partial Class Form1
         Me.ViewAllToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
         Me.ViewAllToolStripMenuItem.Text = "View all..."
         '
+        'UpdateToolStripMenuItem
+        '
+        Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
+        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.UpdateToolStripMenuItem.Text = "Update"
+        '
+        'DeleteToolStripMenuItem
+        '
+        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.DeleteToolStripMenuItem.Text = "Delete"
+        '
         'BuilderToolStripMenuItem
         '
         Me.BuilderToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BuildNewTeamToolStripMenuItem})
@@ -97,23 +111,24 @@ Partial Class Form1
         Me.BuildNewTeamToolStripMenuItem.Size = New System.Drawing.Size(201, 26)
         Me.BuildNewTeamToolStripMenuItem.Text = "Build New Team..."
         '
-        'UpdateToolStripMenuItem
+        'AnalyzeToolStripMenuItem
         '
-        Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
-        Me.UpdateToolStripMenuItem.Text = "Update"
+        Me.AnalyzeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CompareTeamsToolStripMenuItem})
+        Me.AnalyzeToolStripMenuItem.Name = "AnalyzeToolStripMenuItem"
+        Me.AnalyzeToolStripMenuItem.Size = New System.Drawing.Size(73, 24)
+        Me.AnalyzeToolStripMenuItem.Text = "&Analyze"
         '
-        'DeleteToolStripMenuItem
+        'CompareTeamsToolStripMenuItem
         '
-        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
-        Me.DeleteToolStripMenuItem.Text = "Delete"
+        Me.CompareTeamsToolStripMenuItem.Name = "CompareTeamsToolStripMenuItem"
+        Me.CompareTeamsToolStripMenuItem.Size = New System.Drawing.Size(200, 26)
+        Me.CompareTeamsToolStripMenuItem.Text = "Compare Teams..."
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(593, 376)
+        Me.ClientSize = New System.Drawing.Size(632, 379)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
@@ -136,4 +151,6 @@ Partial Class Form1
     Friend WithEvents BuildNewTeamToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AnalyzeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CompareTeamsToolStripMenuItem As ToolStripMenuItem
 End Class
