@@ -1,8 +1,10 @@
-﻿Imports Microsoft.SqlServer
+﻿'Import the sql server commands
+Imports Microsoft.SqlServer
 Public Class createPokemon
+    'This button is used to save pokemon, and all the states thereof in the database specified. 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        'This button will not only check to see if there are any errors in the input of the pokemon but will also save it to the database.
 
+        'Declare all local varibles
         Dim strpokemonName As String
         Dim strpokemonTier As String
         Dim strpokemonType1 As String
@@ -14,11 +16,13 @@ Public Class createPokemon
         Dim intSpecialDefense As Integer
         Dim intSpeed As Integer
 
+        'Set string variables to the appropriate text boxes.
         strpokemonName = txtPokemonName.Text
         strpokemonTier = cboTeir.Text
         strpokemonType1 = cboType1.Text
         strpokemonType2 = cboType2.Text
 
+        'While collecting for the local variables we are doing input validation
         Try
             intHP = CInt(txtHP.Text)
         Catch ex As Exception
@@ -27,6 +31,7 @@ Public Class createPokemon
             txtHP.Focus()
         End Try
 
+        'local variable collection for attack
         Try
             intAttack = CInt(txtAttack.Text)
         Catch ex As Exception
@@ -35,6 +40,7 @@ Public Class createPokemon
             txtAttack.Focus()
         End Try
 
+        'local variable collection for defense
         Try
             intDefense = CInt(txtDefense.Text)
         Catch ex As Exception
@@ -43,6 +49,7 @@ Public Class createPokemon
             txtDefense.Focus()
         End Try
 
+        'local variable collection for special attack
         Try
             intSpecialAttack = CInt(txtSpecialAttack.Text)
         Catch ex As Exception
@@ -51,6 +58,7 @@ Public Class createPokemon
             txtSpecialAttack.Focus()
         End Try
 
+        'local variable collection for special defense
         Try
             intSpecialDefense = CInt(txtSpecialDefense.Text)
         Catch ex As Exception
@@ -59,6 +67,7 @@ Public Class createPokemon
             txtSpecialDefense.Focus()
         End Try
 
+        'local variable collection for speed
         Try
             intSpeed = CInt(txtSpeed.Text)
         Catch ex As Exception
@@ -68,21 +77,11 @@ Public Class createPokemon
         End Try
 
 
-
+        'declare local table adapter
         Dim pdt As New pokemonDBDataSetTableAdapters.PokemonMainTableTableAdapter
 
+        'command the table adapter to insert all of the collect local variables to the database. 
         pdt.Insert(strpokemonName, strpokemonTier, strpokemonType1, strpokemonType2, intHP, intAttack, intDefense, intSpecialAttack, intSpecialDefense, intSpeed)
-
-
-        '        Dim sqlConn As New SqlClient.SqlConnection("Data Source=DESKTOP-KGMCUKK\SQLEXPRESS;Initial Catalog=PokemonDB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
-        '        sqlConn.Open()
-
-        '        Dim sqlcommand As New SqlClient.SqlCommand("insert into dbo.PokemonMainTable ([Pokemon Name],[teir],[type 1],[type 2],[hp],[attack],[defense],
-        '[special attack],[special defense],[speed]) values ("",'','','',0,0,0,0,0,0)", sqlConn)
-
-        '        Dim results As Integer = sqlcommand.ExecuteNonQuery()
-
-        Dim s = "stop"
 
 
 
